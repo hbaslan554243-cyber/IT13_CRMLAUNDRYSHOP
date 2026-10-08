@@ -1,0 +1,6 @@
+@CRMLaundrypro_HostAddress = http://localhost:5172
+
+GET {{CRMLaundrypro_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,16 @@
+# Build output and IDE state
+**/bin/
+**/obj/
+**/build-check/
+.vs/
+.idea/
+
+# Local configuration may contain database credentials or seed passwords
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.example.json
+
+# User-specific files
+*.user
+*.suo
+

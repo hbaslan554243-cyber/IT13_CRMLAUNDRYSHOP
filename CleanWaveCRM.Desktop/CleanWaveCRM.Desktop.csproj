@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CleanWaveCRM.Desktop</RootNamespace>
+    <AssemblyName>CleanWaveCRM.Desktop</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
+    <!-- Bar/line/pie charts for Analytics & Reports -->
+    <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
+    <!-- Not used directly by our code - the Chart control above has an internal
+         legacy reference to this old assembly (from its ASP.NET/.NET Framework
+         heritage) that throws FileNotFoundException at paint time without it. -->
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Entities live in CRM.domain -->
+    <ProjectReference Include="..\CRM.domain\CRM.domain.csproj" />
+    <!-- DbContext / persistence lives in CRM.infrastructure -->
+    <ProjectReference Include="..\CRM.infrastructure\CRM.infrastructure.csproj" />
+    <!-- Business-logic Controllers live in CRM.api -->
+    <ProjectReference Include="..\CRM\CRM.api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="appsettings.example.json" Link="appsettings.json" CopyToOutputDirectory="Always" Condition="!Exists('appsettings.json')" />
+    <None Update="Assets\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
